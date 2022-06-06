@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.security.Key;
 
-public class KeyInput implements KeyListener{
+public class        KeyInput implements KeyListener{
     public static boolean [] keys = new boolean[65556];
     public static boolean w,a,s,d,r, esc;
 
