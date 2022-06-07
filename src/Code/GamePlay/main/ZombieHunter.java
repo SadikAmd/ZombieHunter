@@ -1,5 +1,6 @@
 package Code.GamePlay.main;
 
+import Code.GamePlay.World.World;
 import Code.GamePlay.display.Display;
 import Code.GamePlay.input.KeyInput;
 import Code.GamePlay.input.MouseInput;
@@ -9,62 +10,71 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 
 public class ZombieHunter {
-    private Canvas canvas;
-    private Display display;
-    private boolean isRunning;
+    //timing and FPS stuff
     private int maxFps , actualFps ;
 
+    //width height
+    private int  width , height;
 
-    public ZombieHunter(Display display){
-        this.display = display;
+    //graphics stuff
+    public static Canvas canvas;
+    private Display display;
+
+    private boolean isrunning;
+
+    //Worlds
+    World world;
+
+
+    public ZombieHunter(Display display) {
+        this.display=display;
     }
 
+    //init manages intilizing stuff
     public void init(){
-        canvas = display.getCanvas();
-        maxFps = 30;
+        canvas=display.getCanvas();
+        width=display.getWidth();
+        height=display.getHeight();
+        world= new World();
+
+        maxFps=60;
+        world.init();
     }
 
-    int x = 0;
-    public void render(){
 
-        BufferStrategy bufferStrategy = canvas.getBufferStrategy();
+    //render manages the drawing and th rendering
+    public void render(){
+        BufferStrategy bufferStrategy =  canvas.getBufferStrategy();
         if(bufferStrategy == null){
             canvas.createBufferStrategy(3);
             return;
         }
 
         Graphics graphics = bufferStrategy.getDrawGraphics();
-        graphics.clearRect(0,0, display.getWidth(), display.getHeight());
-        graphics.setColor(Color.RED);
-        graphics.fillRect(x,60,60,60);
-        graphics.drawString("Mouse pos : "+MouseInput.point, MouseInput.point.x,MouseInput.point.y);
-
-
+        //drawing here
+        graphics.clearRect(0, 0, width,height);
+        world.render(graphics);
+        //end draw here
         bufferStrategy.show();
         graphics.dispose();
-
     }
 
     public void tick(){
         KeyInput.update();
-
-        x++;
-
-        if(KeyInput.esc){
+        if(KeyInput.esc)
             System.exit(0);
-        }
-        
+        world.tick();
     }
 
     public void start(){
-        isRunning=true;
+        isrunning=true;
         init();
         int ticks=0;
         long lastTime = System.currentTimeMillis();
         long timePerTick = 1000/maxFps;
         long now;
         long timer =lastTime;
-        while (isRunning) {
+        while (isrunning) {
 
             now= System.currentTimeMillis();
             if(now-lastTime>=timePerTick){

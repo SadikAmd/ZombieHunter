@@ -3,23 +3,25 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Display{
-    private int width,height;
+public class Display {
+    private int width ,height;
     private JFrame window;
-    private String title;
     private Canvas canvas;
-    public Display (int width, int height, String title) {
+    private String title;
+
+    public Display(int width, int height, String title) {
         this.width = width;
         this.height = height;
-        this.title = title;
+        this.title=title;
 
-        initialize();
+        init();
     }
 
-    public void initialize ( ) {
-        window = new JFrame ();
+    public void init(){
+
+        window = new JFrame();
         canvas = new Canvas();
-        canvas.setSize(width, height);
+        canvas .setSize(width, height);
         canvas.setBackground(Color.BLACK);
         canvas.requestFocusInWindow();
 
@@ -27,15 +29,18 @@ public class Display{
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setSize(width, height);
 
+
         window.add(canvas);
+
         window.setResizable(false);
         window.setLocationRelativeTo(null);
     }
 
-    public void showDisplay() {
-        window.setVisible (true) ;
 
+    public void showDisplay(){
+        window.setVisible(true);
     }
+
     public void hideDisplay(){
         window.setVisible(false);
     }
@@ -52,13 +57,8 @@ public class Display{
         return height;
     }
 
-
     public JFrame getWindow() {
         return window;
-    }
-
-    public void setWindow(JFrame window) {
-        this.window = window;
     }
 
     public String getTitle() {
@@ -66,10 +66,11 @@ public class Display{
     }
 
     public void setTitle(String title) {
-        window.setTitle(this.title + " " + title);
+        window.setTitle(this.title+" "+title);
     }
-}
 
+
+}
 
 
 
