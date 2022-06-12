@@ -51,10 +51,10 @@ public class ZombieHunter {
         }
 
         Graphics graphics = bufferStrategy.getDrawGraphics();
-        //drawing here
+
         graphics.clearRect(0, 0, width,height);
         world.render(graphics);
-        //end draw here
+
         bufferStrategy.show();
         graphics.dispose();
     }

@@ -17,6 +17,7 @@ public class Display {
         init();
     }
 
+    //Intialising the display components
     public void init(){
 
         window = new JFrame();
@@ -29,14 +30,14 @@ public class Display {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setSize(width, height);
 
-
+        //adding the canvas to the window
         window.add(canvas);
 
         window.setResizable(false);
         window.setLocationRelativeTo(null);
     }
 
-
+    //Getter and setters to provide acces to other classes
     public void showDisplay(){
         window.setVisible(true);
     }
@@ -71,7 +72,3 @@ public class Display {
 
 
 }
-
-
-
-

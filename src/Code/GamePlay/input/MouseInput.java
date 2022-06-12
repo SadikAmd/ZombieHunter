@@ -11,6 +11,7 @@ import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
 
+
 public class MouseInput implements MouseListener , MouseMotionListener,MouseWheelListener{
 
     public static Point point;

@@ -2,10 +2,6 @@ package Code.GamePlay.input;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.security.Key;
-
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 
 public class KeyInput implements KeyListener{

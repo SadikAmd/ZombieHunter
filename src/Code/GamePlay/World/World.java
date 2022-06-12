@@ -7,14 +7,12 @@ import Code.GamePlay.gameObject.Player;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.logging.Logger;
 
 public class World {
 
-    //player
     private Player player;
     private BufferedImage img;
-    //width heigh
+
     int width , height;
     public World() {
 
@@ -22,7 +20,7 @@ public class World {
 
     public void init(){
         loadWorld();
-        width=height=1500;
+        width=height=900;
         player= new Player(600,400);
         img=Resources.ground;
     }

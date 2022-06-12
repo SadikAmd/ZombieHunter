@@ -18,10 +18,10 @@ public class Main {
 
         KeyInput keyInput = new KeyInput();
         MouseInput mouseInput = new MouseInput();
-        width = 800;
-        height = 600;
+        width = 900;
+        height = 900;
 
-        Display display =  new Display(width,height," Zombie Hunter By Sadik ");
+        Display display =  new Display(width,height," Zombie Hunter by Sadik ");
         display.getCanvas().addKeyListener(keyInput);
         display.getCanvas().addMouseMotionListener(mouseInput);
         display.getCanvas().addMouseListener(mouseInput);
