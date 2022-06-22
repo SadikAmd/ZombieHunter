@@ -8,14 +8,14 @@ public class KeyInput implements KeyListener{
 
     public static boolean [] keys =  new boolean[65556];
 
-    public static boolean w,a,s,d,r,esc;
+    public static boolean w,a,s,d,space,esc;
 
     public static void update(){
         w=keys[KeyEvent.VK_W];
         a=keys[KeyEvent.VK_A];
         s=keys[KeyEvent.VK_S];
         d=keys[KeyEvent.VK_D];
-        r=keys[KeyEvent.VK_R];
+        space=keys[KeyEvent.VK_SPACE];
         esc=keys[KeyEvent.VK_ESCAPE];
     }
     @Override

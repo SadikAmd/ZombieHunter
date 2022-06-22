@@ -1,24 +1,17 @@
 package Code.GamePlay.gameObject;
 
 import Code.GamePlay.Graphics.Resources;
-import Code.GamePlay.main.ZombieHunter;
 import Code.GamePlay.input.KeyInput;
 import Code.GamePlay.input.MouseInput;
+import Code.GamePlay.main.ZombieHunter;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
-
-/**
- *
- * @author josephchuchu
- */
-public class Player implements MouseMotionListener{
+public class Bullet implements MouseMotionListener {
 
     static int  x;
     static int y;
@@ -26,32 +19,29 @@ public class Player implements MouseMotionListener{
     static int height;
     int speed;
     BufferedImage img ;
-    private double scale=1.5;
+    private double scale=1;
     private AffineTransform transform= new AffineTransform();
     private double  rotAngle=0;
 
-    public Player(int x, int y) {
+    public Bullet(int x, int y) {
         this.x = x;
         this.y = y;
-        width=45;
-        height=45;
-        speed=4;
-        img= Resources.player;
+        width = 45;
+        height = 45;
+        speed = 4;
+        img = Resources.bullet;
 
         ZombieHunter.canvas.addMouseMotionListener(this);
+
+
     }
-    double finetuner=0;
+
     public void tick(){
 
-        if(KeyInput.w)
-            y-=speed;
-        if(KeyInput.s)
-            y+=speed;
-        if(KeyInput.a)
-            x-=speed;
-        if(KeyInput.d)
-            x+=speed;
 
+
+        x = Player.x+Player.width/2+10;
+        y = Player.y+Player.height/2+10;
 
         transform = AffineTransform.getTranslateInstance(x, y);
         transform.rotate(rotAngle ,width*scale/2,height*scale/2);
@@ -94,4 +84,8 @@ public class Player implements MouseMotionListener{
         if(width<0)
             rotAngle-=Math.PI;
     }
+
+
+
+
 }
